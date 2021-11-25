@@ -17,7 +17,10 @@ Using Spark UI in AWS Glue
     - `AWS_ACCESS_KEY_ID`
     - `AWS_SECRET_ACCESS_KEY`
 3. In the directory of the `Dockerfile` and `pom.xml`, run
-    `docker build -t glue/sparkui:latest .`
+
+    ```bash
+    docker build -t glue/sparkui:latest .
+    ```
 
 ## Start the Spark History Server
 
@@ -26,7 +29,9 @@ Using Spark UI in AWS Glue
     - Make sure to also change the `S3_PATH` (__Note: for the prefix, use `s3a` instead of `s3`__, e.g)
         - s3a://my-bucket/spark-ui
 
-    `docker run -it -e SPARK_HISTORY_OPTS="-Dspark.history.fs.logDirectory=S3_PATH -Dspark.hadoop.fs.s3a.access.key=AWS_ACCESS_KEY_ID -Dspark.hadoop.fs.s3a.secret.key=AWS_SECRET_ACCESS_KEY" -p 18080:18080 glue/sparkui:latest "/opt/spark/bin/spark-class org.apache.spark.deploy.history.HistoryServer"`
+    ```bash
+    docker run -it -e SPARK_HISTORY_OPTS="-Dspark.history.fs.logDirectory=S3_PATH -Dspark.hadoop.fs.s3a.access.key=AWS_ACCESS_KEY_ID -Dspark.hadoop.fs.s3a.secret.key=AWS_SECRET_ACCESS_KEY" -p 18080:18080 glue/sparkui:latest "/opt/spark/bin/spark-class org.apache.spark.deploy.history.HistoryServer"
+    ```
 
 ## View the Spark UI using your browser
 
